@@ -12,3 +12,10 @@ commands:
   ttvend:
     description: End the current villager conversation
     permission: villagergpt.ttvend
+permissions:
+    villagergpt.ttv:
+        default: true
+    villagergpt.ttvclear:
+        default: true
+    villagergpt.ttvend:
+        default: true
