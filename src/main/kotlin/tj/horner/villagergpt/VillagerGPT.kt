@@ -60,6 +60,6 @@ class VillagerGPT : SuspendingJavaPlugin() {
 
     private fun validateConfig(): Boolean {
         val openAiKey = config.getString("openai-key") ?: return false
-        return openAiKey.trim() != ""
+        return openAiKey.trim() != "sk-OPENAI_API_KEY"
     }
 }

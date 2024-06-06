@@ -1,9 +1,11 @@
 # Obtain a key here: https://platform.openai.com
 openai-key: "sk-OPENAI_API_KEY"
 
-openai-url: "https://api.openai.com"
+# This is the root URL that will be used for all API requests to OpenAI.
+# The URL can include a base path, but in that case, the base path should always end with a /.
+openai-url: "https://api.openai.com/v1/"
 
-openai-model: "gpt-3.5-turbo"
+openai-model: "gpt-4o"
 
 # Log conversation messages to server console, useful for catching abuse
 log-conversations: true
