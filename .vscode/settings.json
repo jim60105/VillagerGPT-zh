@@ -6,6 +6,8 @@
         "editor.formatOnSaveMode": "file"
     },
     "cSpell.words": [
+        "corretto",
+        "gradlew",
         "openai",
         "ttvclear",
         "ttvend",
