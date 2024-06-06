@@ -106,8 +106,8 @@ class TradeOfferProcessor(private val logger: Logger) : ConversationMessageProce
 
     private fun invalidTradeComponent(rawTrade: String): Component {
         return Component.text()
-            .content("[Invalid Trade]")
-            .hoverEvent(HoverEvent.showText(Component.text("The response contained a recipe for an invalid trade. Here is the attempted recipe:\n\n$rawTrade")))
+            .content("[無效交易]")
+            .hoverEvent(HoverEvent.showText(Component.text("回應中包含了一個無效的交易:\n\n$rawTrade")))
             .color(NamedTextColor.RED)
             .build()
     }

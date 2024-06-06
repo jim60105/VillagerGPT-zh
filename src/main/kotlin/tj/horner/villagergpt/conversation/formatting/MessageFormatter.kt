@@ -13,20 +13,24 @@ object MessageFormatter {
         return formatMessage(message, villagerComponent(villager), playerComponent())
     }
 
-    private fun formatMessage(message: Component, sender: Component, recipient: Component): Component {
+    private fun formatMessage(
+            message: Component,
+            sender: Component,
+            recipient: Component
+    ): Component {
         val formattedMessage = Component.text().content("")
 
         return formattedMessage
-            .append(sender)
-            .append(Component.text(" → ").color(NamedTextColor.WHITE))
-            .append(recipient)
-            .append(Component.text(": "))
-            .append(message)
-            .build()
+                .append(sender)
+                .append(Component.text(" → ").color(NamedTextColor.WHITE))
+                .append(recipient)
+                .append(Component.text(": "))
+                .append(message)
+                .build()
     }
 
     private fun playerComponent(): Component {
-        return Component.text("You").color(NamedTextColor.DARK_AQUA)
+        return Component.text("你").color(NamedTextColor.DARK_AQUA)
     }
 
     private fun villagerComponent(villager: Villager): Component {

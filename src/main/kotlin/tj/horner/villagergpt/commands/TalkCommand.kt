@@ -14,26 +14,28 @@ import tj.horner.villagergpt.chat.ChatMessageTemplate
 
 class TalkCommand(private val plugin: VillagerGPT) : SuspendingCommandExecutor {
     override suspend fun onCommand(
-        sender: CommandSender,
-        command: Command,
-        label: String,
-        args: Array<out String>
+            sender: CommandSender,
+            command: Command,
+            label: String,
+            args: Array<out String>
     ): Boolean {
         if (sender !is Player) return true
         val player: Player = sender
 
         val conversation = plugin.conversationManager.getConversation(player)
+
         if (conversation != null) {
-            val message = Component.text("You are already in a conversation with ")
-                .append(conversation.villager.name().color(NamedTextColor.AQUA))
-                .decorate(TextDecoration.ITALIC)
+            val message =
+                    Component.text("您正在和 ")
+                            .append(conversation.villager.name().color(NamedTextColor.AQUA))
+                            .append(Component.text(" 對話中"))
+                            .decorate(TextDecoration.ITALIC)
 
             player.sendMessage(ChatMessageTemplate.withPluginNamePrefix(message))
             return true
         }
 
-        val message = Component.text("Please right-click on a villager to speak with")
-            .decorate(TextDecoration.ITALIC)
+        val message = Component.text("請右鍵點擊村民以進行交談").decorate(TextDecoration.ITALIC)
 
         player.sendMessage(ChatMessageTemplate.withPluginNamePrefix(message))
 

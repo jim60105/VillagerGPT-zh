@@ -3,6 +3,7 @@ package tj.horner.villagergpt
 import com.github.shynixn.mccoroutine.bukkit.SuspendingJavaPlugin
 import com.github.shynixn.mccoroutine.bukkit.registerSuspendingEvents
 import com.github.shynixn.mccoroutine.bukkit.setSuspendingExecutor
+import java.util.logging.Level
 import tj.horner.villagergpt.commands.ClearCommand
 import tj.horner.villagergpt.commands.EndCommand
 import tj.horner.villagergpt.commands.TalkCommand
@@ -13,23 +14,23 @@ import tj.horner.villagergpt.conversation.pipeline.processors.TradeOfferProcesso
 import tj.horner.villagergpt.conversation.pipeline.producers.OpenAIMessageProducer
 import tj.horner.villagergpt.handlers.ConversationEventsHandler
 import tj.horner.villagergpt.tasks.EndStaleConversationsTask
-import java.util.logging.Level
 
 class VillagerGPT : SuspendingJavaPlugin() {
     val conversationManager = VillagerConversationManager(this)
-    val messagePipeline = MessageProcessorPipeline(
-        OpenAIMessageProducer(config),
-        listOf(
-            ActionProcessor(),
-            TradeOfferProcessor(logger)
-        )
-    )
+    val messagePipeline =
+            MessageProcessorPipeline(
+                    OpenAIMessageProducer(config),
+                    listOf(ActionProcessor(), TradeOfferProcessor(logger))
+            )
 
     override suspend fun onEnableAsync() {
         saveDefaultConfig()
 
         if (!validateConfig()) {
-            logger.log(Level.WARNING, "VillagerGPT has not been configured correctly! Please set the `openai-key` in config.yml.")
+            logger.log(
+                    Level.WARNING,
+                    "VillagerGPT has not been configured correctly! Please set the `openai-key` in config.yml."
+            )
             return
         }
 

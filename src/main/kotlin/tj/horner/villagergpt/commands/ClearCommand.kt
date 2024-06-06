@@ -11,18 +11,18 @@ import tj.horner.villagergpt.chat.ChatMessageTemplate
 
 class ClearCommand(private val plugin: VillagerGPT) : SuspendingCommandExecutor {
     override suspend fun onCommand(
-        sender: CommandSender,
-        command: Command,
-        label: String,
-        args: Array<out String>
+            sender: CommandSender,
+            command: Command,
+            label: String,
+            args: Array<out String>
     ): Boolean {
         if (sender !is Player) return true
         val player: Player = sender
 
         val conversation = plugin.conversationManager.getConversation(player)
         if (conversation == null) {
-            val message = Component.text("You are not currently in a conversation. Use /ttv to start one")
-                .decorate(TextDecoration.ITALIC)
+            val message =
+                    Component.text("您目前並未參與任何對話。請使用 /ttv 來開始一個對話。").decorate(TextDecoration.ITALIC)
 
             player.sendMessage(ChatMessageTemplate.withPluginNamePrefix(message))
             return true
@@ -30,8 +30,8 @@ class ClearCommand(private val plugin: VillagerGPT) : SuspendingCommandExecutor 
 
         conversation.reset()
 
-        val message = Component.text("Your conversation has been cleared")
-            .decorate(TextDecoration.ITALIC)
+        val message = Component.text("您的對話狀態已被清除").decorate(TextDecoration.ITALIC)
+
         player.sendMessage(ChatMessageTemplate.withPluginNamePrefix(message))
 
         return true
