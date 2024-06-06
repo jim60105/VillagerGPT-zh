@@ -1,6 +1,8 @@
 package tj.horner.villagergpt.conversation.pipeline.processors
 
 import com.google.gson.Gson
+import java.util.logging.Level
+import java.util.logging.Logger
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.event.HoverEvent
@@ -9,22 +11,21 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.MerchantRecipe
-import org.bukkit.plugin.Plugin
-import org.bukkit.plugin.java.JavaPlugin
 import tj.horner.villagergpt.conversation.VillagerConversation
 import tj.horner.villagergpt.conversation.formatting.MessageFormatter
 import tj.horner.villagergpt.conversation.pipeline.ConversationMessageAction
 import tj.horner.villagergpt.conversation.pipeline.ConversationMessageProcessor
 import tj.horner.villagergpt.conversation.pipeline.actions.SendPlayerMessageAction
 import tj.horner.villagergpt.conversation.pipeline.actions.SetTradesAction
-import java.util.logging.Level
-import java.util.logging.Logger
 
 class TradeOfferProcessor(private val logger: Logger) : ConversationMessageProcessor {
     private val gson = Gson()
     private val itemFactory = Bukkit.getServer().itemFactory
 
-    override fun processMessage(message: String, conversation: VillagerConversation): Collection<ConversationMessageAction> {
+    override fun processMessage(
+            message: String,
+            conversation: VillagerConversation
+    ): Collection<ConversationMessageAction> {
         val tradeExpressionRegex = Regex("TRADE(\\[.+?\\])ENDTRADE")
         val splitMessage = splitWithMatches(message, tradeExpressionRegex)
 
@@ -42,7 +43,7 @@ class TradeOfferProcessor(private val logger: Logger) : ConversationMessageProce
 
                     val tradeMessage = chatFormattedRecipe(trade)
                     messageComponent.append(tradeMessage)
-                } catch(e: Exception) {
+                } catch (e: Exception) {
                     logger.log(Level.WARNING, "Chat response contained invalid trade: $response", e)
                     messageComponent.append(invalidTradeComponent(response))
                 }
@@ -51,11 +52,15 @@ class TradeOfferProcessor(private val logger: Logger) : ConversationMessageProce
             }
         }
 
-        val formattedMessage = MessageFormatter.formatMessageFromVillager(messageComponent.build(), conversation.villager)
+        val formattedMessage =
+                MessageFormatter.formatMessageFromVillager(
+                        messageComponent.build(),
+                        conversation.villager
+                )
 
         return listOf(
-            SetTradesAction(conversation.villager, trades),
-            SendPlayerMessageAction(conversation.player, formattedMessage)
+                SetTradesAction(conversation.villager, trades),
+                SendPlayerMessageAction(conversation.player, formattedMessage)
         )
     }
 
@@ -88,14 +93,14 @@ class TradeOfferProcessor(private val logger: Logger) : ConversationMessageProce
             component.append(Component.text("${it.amount} ").color(NamedTextColor.LIGHT_PURPLE))
             component.append(it.displayName())
 
-            if (index + 1 < recipe.ingredients.count())
-                component.append(Component.text(" + "))
-            else
-                component.append(Component.text(" "))
+            if (index + 1 < recipe.ingredients.count()) component.append(Component.text(" + "))
+            else component.append(Component.text(" "))
         }
 
         component.append(Component.text("→ "))
-        component.append(Component.text("${recipe.result.amount} ").color(NamedTextColor.LIGHT_PURPLE))
+        component.append(
+                Component.text("${recipe.result.amount} ").color(NamedTextColor.LIGHT_PURPLE)
+        )
         component.append(recipe.result.displayName())
         component.append(Component.text("]"))
 
@@ -106,10 +111,10 @@ class TradeOfferProcessor(private val logger: Logger) : ConversationMessageProce
 
     private fun invalidTradeComponent(rawTrade: String): Component {
         return Component.text()
-            .content("[無效交易]")
-            .hoverEvent(HoverEvent.showText(Component.text("回應中包含了一個無效的交易:\n\n$rawTrade")))
-            .color(NamedTextColor.RED)
-            .build()
+                .content("[無效交易]")
+                .hoverEvent(HoverEvent.showText(Component.text("回應中包含了一個無效的交易:\n\n$rawTrade")))
+                .color(NamedTextColor.RED)
+                .build()
     }
 
     private fun splitWithMatches(input: String, regex: Regex): List<String> {

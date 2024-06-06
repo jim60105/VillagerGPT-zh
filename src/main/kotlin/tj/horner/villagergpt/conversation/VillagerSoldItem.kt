@@ -28,7 +28,7 @@ enum class VillagerSoldItem {
     FARMER {
         override fun SoldItemList(): Collection<String> =
                 listOf(
-                        "Bread",
+                        "bread",
                         "pumpkin_pie",
                         "apple",
                         "cookie",
@@ -40,25 +40,11 @@ enum class VillagerSoldItem {
     },
     FISHERMAN {
         override fun SoldItemList(): Collection<String> =
-                listOf(
-                        "cooked_cod",
-                        "cod_bucket",
-                        "cooked_salmon",
-                        "campfire",
-                        "Enchanted fishing_rod"
-                )
+                listOf("cooked_cod", "cod_bucket", "cooked_salmon", "campfire", "fishing_rod")
     },
     FLETCHER {
         override fun SoldItemList(): Collection<String> =
-                listOf(
-                        "arrow",
-                        "flint",
-                        "bow",
-                        "crossbow",
-                        "Enchanted Bow",
-                        "	Enchanted Crossbow",
-                        "tipped_arrow"
-                )
+                listOf("arrow", "flint", "bow", "crossbow", "bow", "crossbow", "tipped_arrow")
     },
     LEATHERWORKER {
         override fun SoldItemList(): Collection<String> =
@@ -74,15 +60,7 @@ enum class VillagerSoldItem {
     },
     LIBRARIAN {
         override fun SoldItemList(): Collection<String> =
-                listOf(
-                        "Enchanted Book",
-                        "bookshelf",
-                        "lantern",
-                        "glass",
-                        "clock",
-                        "compass",
-                        "name_tag"
-                )
+                listOf("book", "bookshelf", "lantern", "glass", "clock", "compass", "name_tag")
     },
     MASON {
         override fun SoldItemList(): Collection<String> =

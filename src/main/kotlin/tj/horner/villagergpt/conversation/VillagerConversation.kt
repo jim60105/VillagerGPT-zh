@@ -136,11 +136,10 @@ class VillagerConversation(private val plugin: Plugin, val villager: Villager, v
         ### 範例
 
         TRADE[["24 minecraft:emerald"],["1 minecraft:arrow"]]ENDTRADE
-        TRADE[["12 minecraft:emerald","1 minecraft:book"],["1 minecraft:enchanted_book[stored_enchantments={levels:{lure:3}}]"]]ENDTRADE
 
         ### 交易規則
         - 物品必須按其《Minecraft》物品ID指定，格式需與 /give 指令接受相同
-        - 物品可以附加附魔。請使用 structured components 格式指定附魔
+        - 物品"不可以"附加附魔，且不能交易附魔書
         - 您"不需要"在每次回應時都提供一筆貿易，只有在必要時才提出
         - 不要給予太強大的物品(例如:多重附魔鑽石劍)。同時確保強大的物品價格合理
         - 在提出交易時考慮玩家聲望分數
