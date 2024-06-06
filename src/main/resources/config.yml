@@ -1,9 +1,9 @@
 # Obtain a key here: https://platform.openai.com
-openai-key: ""
+openai-key: "sk-OPENAI_API_KEY"
 
-openai-url: ""
+openai-url: "https://api.openai.com"
 
-openai-model: "cognitivecomputations/dolphin-2.6-mixtral-8x7b"
+openai-model: "gpt-3.5-turbo"
 
 # Log conversation messages to server console, useful for catching abuse
 log-conversations: true
