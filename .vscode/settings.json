@@ -1,0 +1,8 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "[kotlin]": {
+        "editor.defaultFormatter": "fwcd.kotlin",
+        "editor.formatOnSaveMode": "file"
+    },
+}
