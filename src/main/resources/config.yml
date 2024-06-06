@@ -4,6 +4,8 @@ openai-key: "sk-OPENAI_API_KEY"
 # This is the root URL that will be used for all API requests to OpenAI.
 # The URL can include a base path, but in that case, the base path should always end with a /.
 openai-url: "https://api.openai.com/v1/"
+openai-query-param: ""
+openai-headers: ""
 
 openai-model: "gpt-4o"
 

@@ -14,17 +14,42 @@ class OpenAIMessageProducer(config: Configuration) : ConversationMessageProducer
     private val openAIKey = config.getString("openai-key")!!
     private val openAIModel = config.getString("openai-model") ?: "gpt-3.5-turbo"
     private val openAIUrl = config.getString("openai-url") ?: "https://api.openai.com/v1/"
-
-    private val openAIHost = OpenAIHost(baseUrl = openAIUrl)
-    private val openAI =
-            OpenAI(
-                    OpenAIConfig(
-                            host = openAIHost,
-                            token = openAIKey,
-                    )
-            )
+    private val openAIQueryParam = config.getString("openai-query-param") ?: ""
+    private val openAIHeaders = config.getString("openai-headers") ?: ""
+    private var openAI: OpenAI
 
     private val model = ModelId(openAIModel)
+
+    init {
+        var queryMap: Map<String, String> = emptyMap()
+        var headerMap: Map<String, String> = emptyMap()
+
+        if (openAIQueryParam.isNotEmpty()) {
+            queryMap =
+                    openAIQueryParam
+                            .split(",")
+                            .map {
+                                val (key, value) = it.split("=")
+                                key to value
+                            }
+                            .toMap()
+        }
+
+        if (openAIHeaders.isNotEmpty()) {
+            headerMap =
+                    openAIHeaders
+                            .split(",")
+                            .map {
+                                val (key, value) = it.split("=")
+                                key to value
+                            }
+                            .toMap()
+        }
+
+        var openAIHost = OpenAIHost(baseUrl = openAIUrl, queryParams = queryMap)
+
+        openAI = OpenAI(OpenAIConfig(host = openAIHost, token = openAIKey, headers = headerMap))
+    }
 
     @OptIn(BetaOpenAI::class)
     override suspend fun produceNextMessage(conversation: VillagerConversation): String {
@@ -37,6 +62,6 @@ class OpenAIMessageProducer(config: Configuration) : ConversationMessageProducer
                 )
 
         val completion = openAI.chatCompletion(request)
-        return completion.choices[0].message!!.content!!
+        return completion.choices[0].message.content ?: ""
     }
 }
