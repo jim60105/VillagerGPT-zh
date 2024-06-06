@@ -21,6 +21,12 @@ enum class VillagerPersonality {
     },
     EMPATH {
         override fun promptDescription(): String = "你是一個和藹的人，對別人的情況很富同情心"
+    },
+    NITWIT {
+        override fun promptDescription(): String = "您是一個愚蠢的人，經常說出奇怪的話，但總是讓人開心"
+    },
+    UNKNOWN {
+        override fun promptDescription(): String = "您的性格未被定義，您可以自己決定您的性格"
     };
 
     abstract fun promptDescription(): String
