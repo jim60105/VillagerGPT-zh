@@ -11,15 +11,7 @@ enum class VillagerSoldItem {
     },
     CARTOGRAPHER {
         override fun SoldItemList(): Collection<String> =
-                listOf(
-                        "map",
-                        "filled_map.mansion",
-                        "filled_map.ocean",
-                        "filled_map.buried_treasure",
-                        "item_frame",
-                        "banner",
-                        "banner_pattern"
-                )
+                listOf("map", "item_frame", "(Any colored)_banner", "globe_banner_pattern")
     },
     CLERIC {
         override fun SoldItemList(): Collection<String> =
@@ -33,7 +25,6 @@ enum class VillagerSoldItem {
                         "apple",
                         "cookie",
                         "cake",
-                        "suspicious_stew",
                         "golden_carrot",
                         "glistering_melon_slice"
                 )
@@ -44,7 +35,7 @@ enum class VillagerSoldItem {
     },
     FLETCHER {
         override fun SoldItemList(): Collection<String> =
-                listOf("arrow", "flint", "bow", "crossbow", "bow", "crossbow", "tipped_arrow")
+                listOf("arrow", "flint", "bow", "crossbow")
     },
     LEATHERWORKER {
         override fun SoldItemList(): Collection<String> =
@@ -53,7 +44,6 @@ enum class VillagerSoldItem {
                         "leather_chestplate",
                         "leather_helmet",
                         "leather_boots",
-                        "leather_chestplate",
                         "leather_horse_armor",
                         "saddle"
                 )
@@ -65,21 +55,27 @@ enum class VillagerSoldItem {
     MASON {
         override fun SoldItemList(): Collection<String> =
                 listOf(
-                        "Brick",
+                        "brick",
                         "chiseled_stone_bricks",
                         "polished_andesite",
                         "polished_granite",
                         "polished_diorite",
                         "dripstone_block",
-                        "colored terracotta",
-                        "glazed_terracotta",
+                        "terracotta",
+                        "(Any colored)_terracotta",
+                        "(Any colored)_glazed_terracotta",
                         "quartz_pillar",
                         "quartz_block"
                 )
     },
     SHEPHERD {
         override fun SoldItemList(): Collection<String> =
-                listOf("color wool", "color Carpet", "color Bed", "color banner")
+                listOf(
+                        "(Any colored)_wool",
+                        "(Any colored)_Carpet",
+                        "(Any colored)_bed",
+                        "(Any colored)_banner"
+                )
     },
     TOOLSMITH {
         override fun SoldItemList(): Collection<String> =
