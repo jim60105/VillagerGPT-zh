@@ -15,3 +15,5 @@ log-conversations: true
 # Either "system" or "user"; configures the type of message the "preamble"
 # will be. "user" is more likely to work with GPT-3.5
 preamble-message-type: system
+
+topics: "\n"
