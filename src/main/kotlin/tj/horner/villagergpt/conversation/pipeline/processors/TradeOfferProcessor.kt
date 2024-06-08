@@ -52,11 +52,13 @@ class TradeOfferProcessor(private val logger: Logger) : ConversationMessageProce
             }
         }
 
-        val formattedMessage =
+        var formattedMessage =
                 MessageFormatter.formatMessageFromVillager(
                         messageComponent.build(),
                         conversation.villager
                 )
+
+        formattedMessage = MessageFormatter.clickableLink(formattedMessage, message, logger)
 
         return listOf(
                 SetTradesAction(conversation.villager, trades),
