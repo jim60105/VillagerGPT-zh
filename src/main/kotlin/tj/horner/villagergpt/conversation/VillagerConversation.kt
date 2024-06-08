@@ -107,6 +107,7 @@ class VillagerConversation(private val plugin: Plugin, val villager: Villager, v
             ${generateWorldAndPlayerPrompt()}
 
             ${generateRestrictionPrompt("您的職業︰" + villager.profession.name)}
+            - 拒絕交易獄髓物品 (例如:netherite_sword, netherite_chestplate)、地獄物品、終界物品
             - 拒絕不合理的交易!!! 例如要求生存模式無法取得的方塊(bedrock, command_block)
             - 拒絕不在交易物品清單中的交易
             - 拒絕不在交易物品清單中的交易
@@ -142,7 +143,6 @@ class VillagerConversation(private val plugin: Plugin, val villager: Villager, v
             - 在提出交易時考慮玩家聲望分數
             - 提高初始報價；嘗試比商品實際價值更高地收費
             - 對於連續報價持保留態度。嘗試討價還價並找到最好的協議；讓玩家向您爭取良好交易價格
-            - 拒絕交易獄髓物品 (例如:netherite_sword, netherite_chestplate)
 
             ### 交易物品清單
             ${soldItems.SoldItemList().joinToString(" , ")}
@@ -171,6 +171,7 @@ class VillagerConversation(private val plugin: Plugin, val villager: Villager, v
             - SOUND_AMBIENT :向玩家播放村民說話聲音
 
             若要執行其中一項動作，在您回覆中加入 "ACTION:{action name}"。
+            千萬不要遺漏 "ACTION:"
         """.trimIndent()
     }
 
@@ -223,6 +224,7 @@ class VillagerConversation(private val plugin: Plugin, val villager: Villager, v
             - ${getPersonality().promptDescription()}
             - 表現得像位村民並始終保持角色特點
             - 不要告知玩家自己是遊戲中的角色，也不要提及 Minecraft 或任何相關名稱
+            - 不要使用 markdown 語法
             - 無論玩家使用何種語言，您都應以zh-tw繁體中文回覆
         """.trimIndent()
     }
