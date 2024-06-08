@@ -82,12 +82,12 @@ class ConversationEventsHandler(private val plugin: VillagerGPT) : Listener {
         // Player is selecting a villager for conversation
         evt.isCancelled = true
 
-        if (villager.profession == Villager.Profession.NONE) {
-            val message = Component.text("你只能和有職業的村民交談").decorate(TextDecoration.ITALIC)
+        // if (villager.profession == Villager.Profession.NONE) {
+        //     val message = Component.text("你只能和有職業的村民交談").decorate(TextDecoration.ITALIC)
 
-            evt.player.sendMessage(ChatMessageTemplate.withPluginNamePrefix(message))
-            return
-        }
+        //     evt.player.sendMessage(ChatMessageTemplate.withPluginNamePrefix(message))
+        //     return
+        // }
 
         plugin.conversationManager.startConversation(evt.player, villager)
         evt.player.removeMetadata(MetadataKey.SelectingVillager, plugin)
