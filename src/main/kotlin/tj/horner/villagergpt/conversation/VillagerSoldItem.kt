@@ -3,7 +3,22 @@ package tj.horner.villagergpt.conversation
 enum class VillagerSoldItem {
     ARMORER {
         override fun SoldItemList(): Collection<String> =
-                listOf("helmet", "chestplate", "leggings", "boots", "bell", "shield")
+                listOf(
+                        "chainmail_helmet",
+                        "iron_helmet",
+                        "diamond_helmet",
+                        "chainmail_chestplate",
+                        "iron_chestplate",
+                        "diamond_chestplate",
+                        "chainmail_leggings",
+                        "iron_leggings",
+                        "diamond_leggings",
+                        "chainmail_boots",
+                        "iron_boots",
+                        "diamond_boots",
+                        "bell",
+                        "shield"
+                )
     },
     BUTCHER {
         override fun SoldItemList(): Collection<String> =
@@ -74,15 +89,31 @@ enum class VillagerSoldItem {
                         "(Any colored)_wool",
                         "(Any colored)_Carpet",
                         "(Any colored)_bed",
-                        "(Any colored)_banner"
+                        "(Any colored)_banner",
+                        "painting"
                 )
     },
     TOOLSMITH {
         override fun SoldItemList(): Collection<String> =
-                listOf("axe", "shovel", "pickaxe", "hoe", "bell")
+                listOf(
+                        "stone_axe",
+                        "iron_axe",
+                        "diamond_axe",
+                        "stone_shovel",
+                        "iron_shovel",
+                        "diamond_shovel",
+                        "stone_pickaxe",
+                        "iron_pickaxe",
+                        "diamond_pickaxe",
+                        "stone_hoe",
+                        "iron_hoe",
+                        "diamond_hoe",
+                        "bell"
+                )
     },
     WEAPONSMITH {
-        override fun SoldItemList(): Collection<String> = listOf("axe", "sword", "bell")
+        override fun SoldItemList(): Collection<String> =
+                listOf("iron_axe", "diamond_axe", "iron_sword", "diamond_sword", "bell")
     };
 
     abstract fun SoldItemList(): Collection<String>
