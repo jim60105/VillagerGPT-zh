@@ -3,9 +3,15 @@ openai-key: "sk-OPENAI_API_KEY"
 
 # This is the root URL that will be used for all API requests to OpenAI.
 # The URL can include a base path, but in that case, the base path should always end with a /.
+# The default value works with OpenAI API.
 openai-url: "https://api.openai.com/v1/"
 openai-query-param: ""
 openai-headers: ""
+
+## Example for Azure OpenAI with gpt-4o
+# openai-url: "https://CHANGETHIS.openai.azure.com/openai/deployments/gpt-4o/"
+# openai-query-param: "api-version=2024-02-15-preview"
+# openai-headers: "api-key=changethiskey1231231"
 
 openai-model: "gpt-4o"
 
@@ -16,4 +22,5 @@ log-conversations: true
 # will be. "user" is more likely to work with GPT-3.5
 preamble-message-type: system
 
+# Customizing the topic for AI chatting, please write a YAML list with line breaks using \n "IN CHINESE".
 topics: "\n"

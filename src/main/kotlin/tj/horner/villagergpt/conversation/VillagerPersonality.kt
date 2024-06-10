@@ -20,7 +20,7 @@ enum class VillagerPersonality {
         override fun promptDescription(): String = "您嚴肅且直截了當；對於閒聊沒有太多耐心"
     },
     EMPATH {
-        override fun promptDescription(): String = "你是一個和藹的人，對別人的情況很富同情心"
+        override fun promptDescription(): String = "您是一個和藹的人，對別人的情況很富同情心"
     },
     NITWIT {
         override fun promptDescription(): String = "您是一個愚蠢的人，經常說出奇怪的話，但總是讓人開心"
