@@ -40,6 +40,12 @@ AI 依照設定和玩家互動，並產生交易清單
 ![2024-06-10-214514](https://github.com/jim60105/VillagerGPT/assets/16995691/8d513163-5e60-4aa2-bdfe-34f5332f2d95)
 ![2024-06-10-214529](https://github.com/jim60105/VillagerGPT/assets/16995691/2b87cc37-939d-4173-bde6-e99d9696f74c)
 
+## 下載
+
+- 在 CI 取得最新的建置版本 [https://github.com/jim60105/VillagerGPT/actions/workflows/build-gradle.yml](https://github.com/jim60105/VillagerGPT/actions/workflows/build-gradle.yml)
+- 解壓縮 zip 檔案
+- 將 jar 檔放入伺服器的 plugins 資料夾
+
 ## 使用方法
 
 與村民開始對話，請使用指令「/ttv」然後右鍵點擊您想要交談的村民。  
