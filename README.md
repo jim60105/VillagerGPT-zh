@@ -4,16 +4,21 @@
 
 ## 和原版的不同
 
-- Completely translate into Chinese, including UI messages and prompts.  
-  完全翻譯為中文，包含訊息和提示詞
+- Completely translate into Chinese, including UI messages and prompts.
+  - 完全翻譯為中文，包含訊息和提示詞
+  - 無論你以伺種語言進行交談，AI 都會回應中文
 - 支援 OpenAI 相容 API，例如 Azure OpenAI (by [AidanTheBandit](https://github.com/AidanTheBandit/VillagerGPT/commit/d34d9f910a7a39422219346fc35744e580733327))
-- 升級專案以配合 Minecraft 1.20.6
-- 由於 1.20.6 版本棄用 NBT tag 改用 component，而 GPT 現在無法正確的產生 component 式的物品附加資訊
-  - 禁止交易附魔工具、附魔書
-  - 禁止出售藏寶地圖
+- 升級專案以配合 Minecraft ***1.20.6***
+- 由於 1.20.6 版本棄用 NBT tag 改用 component，而 GPT 現在無法正確的產生 component 式的物品附加資訊，因此
+  - 禁止交易附魔物品、附魔書
+  - 禁止交易探險家地圖
+  - 禁止交易藥水、藥水瓶、藥水箭
 - 交易項目改為正面列表，以增強回應的穩定性
-- 可以和「無業」及「傻子」交談，但無法進行交易
-- 在 config 中添加客製化話題，讓 AI 符合你的世界觀設定
+- 改進提示詞工程，使 AI 表現更穩定
+- 可以和「無職業」及「傻子」交談聊天
+  - 他們會始終拒絕交易
+  - 傻子會扮演愚蠢的性格
+- 可在 config 中添加客製化話題，讓 AI 符合你的世界觀設定
 - 當 AI 回應中包含連結時能點擊開啟，適合在多人伺服器中用做宣傳
 - 預設值是允許所有人執行指令！ (包含非管理員)
 
@@ -49,10 +54,10 @@ AI 依照設定和玩家互動，並產生交易清單
 ## 使用方法
 
 與村民開始對話，請使用指令「/ttv」然後右鍵點擊您想要交談的村民。  
-一旦對話開始，只需發送聊天訊息即可繼續對話。   
+對話開始後，發送聊天訊息即可繼續對話。  
 使用「/ttvend」結束對話，或者直接走離該村民。
 
-當 AI 村民提出交易時，您可以像平常一樣打開右鍵點擊該村民，並進行交易。
+當 AI 村民提出交易後請右鍵點擊該村民，打開交易清單和他進行交易。
 
 ## AI 村民
 
@@ -155,7 +160,7 @@ topics: "- 您居住在紅葉王國\n- 您敬仰的紅葉精靈小公主，她�
 ## 權限
 
 > [!CAUTION]  
-> 預設允許所有人(非管理員)執行指令！
+> 預設值是允許所有人執行指令！ (包含非管理員)
 
 - `villagergpt.ttv`：允許使用 `/ttv` 命令
 - `villagergpt.ttvclear`：允許使用 `/ttvclear` 命令
