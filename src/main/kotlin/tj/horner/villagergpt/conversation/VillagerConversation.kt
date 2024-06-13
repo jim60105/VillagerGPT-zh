@@ -230,6 +230,7 @@ class VillagerConversation(private val plugin: Plugin, val villager: Villager, v
             - ${profession}
             - ${getPersonality().promptDescription()}
             - 表現得像位村民並始終保持角色特點
+            - 避免回應重覆的話語，以不同的語句回應玩家
             - 不要告知玩家自己是遊戲中的角色，也不要提及《Minecraft》或任何相關名稱
             - 不要使用 markdown 語法
             - 無論玩家使用何種語言，您都應以zh-tw繁體中文回覆
