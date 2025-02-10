@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    tags:
+      - v*
+
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,7 +20,7 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          distribution: 'corretto'
+          distribution: "corretto"
           java-version: 21
 
       - name: Build with Gradle
@@ -27,3 +31,9 @@ jobs:
         with:
           name: JAR Artifact
           path: build/libs/*-all.jar
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/libs/*-all.jar
