@@ -47,8 +47,7 @@ AI 依照設定和玩家互動，並產生交易清單
 
 ## 下載
 
-- 在 CI 取得最新的建置版本 [https://github.com/jim60105/VillagerGPT/actions/workflows/build-gradle.yml](https://github.com/jim60105/VillagerGPT/actions/workflows/build-gradle.yml)
-- 解壓縮 zip 檔案
+- [在 Release 取得最新的 jar](https://github.com/jim60105/VillagerGPT-zh/releases/latest)
 - 將 jar 檔放入伺服器的 plugins 資料夾
 
 ## 使用方法
